@@ -1,0 +1,32 @@
+/* Badge 元件樣式 */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-border-light);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.badge-icon {
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+}
+
+.badge-text {
+    line-height: 1.4;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .badge {
+        font-size: 12px;
+        padding: var(--space-xs) var(--space-sm);
+    }
+}

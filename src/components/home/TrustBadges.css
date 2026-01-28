@@ -1,0 +1,27 @@
+/* TrustBadges 元件樣式 */
+
+.trust-badges-section {
+    padding: var(--space-2xl) 0;
+    background: var(--color-border-light);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.trust-badges-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .trust-badges-section {
+        padding: var(--space-lg) 0;
+    }
+
+    .trust-badges-wrapper {
+        gap: var(--space-md);
+    }
+}

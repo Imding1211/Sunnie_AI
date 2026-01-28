@@ -1,0 +1,102 @@
+/* Button 元件樣式 */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-semibold);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========== 變體樣式 ========== */
+
+/* Primary Button - 實心 CTA 色 */
+.btn-primary {
+    background: var(--color-cta);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Secondary Button - 外框式 */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Ghost Button - 文字式 */
+.btn-ghost {
+    background: transparent;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.btn-ghost:hover:not(:disabled) {
+    color: var(--color-secondary);
+    text-decoration-thickness: 2px;
+}
+
+/* ========== 尺寸樣式 ========== */
+
+/* Large - 56px */
+.btn-large {
+    height: 56px;
+    padding: 0 var(--space-xl);
+    font-size: 18px;
+}
+
+/* Medium - 48px */
+.btn-medium {
+    height: 48px;
+    padding: 0 var(--space-lg);
+    font-size: 16px;
+}
+
+/* Small - 40px */
+.btn-small {
+    height: 40px;
+    padding: 0 var(--space-md);
+    font-size: 14px;
+}
+
+/* ========== 響應式調整 ========== */
+@media (max-width: 768px) {
+
+    .btn-large,
+    .btn-medium {
+        width: 100%;
+    }
+}

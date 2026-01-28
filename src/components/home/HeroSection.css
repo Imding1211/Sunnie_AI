@@ -1,0 +1,112 @@
+/* HeroSection 元件樣式 */
+
+.hero-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: var(--space-5xl) 0;
+}
+
+/* 背景層 */
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            #0F172A 0%,
+            #1E293B 50%,
+            #334155 100%);
+}
+
+.hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* 內容區 */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    margin-bottom: var(--space-lg);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-3xl);
+    line-height: 1.6;
+}
+
+.hero-search {
+    margin-bottom: var(--space-2xl);
+    animation-delay: 0.2s;
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    animation-delay: 0.4s;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 70vh;
+        padding: var(--space-3xl) 0;
+    }
+
+    .hero-title {
+        font-size: var(--text-h1);
+        margin-bottom: var(--space-md);
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: var(--space-2xl);
+    }
+
+    .hero-search {
+        margin-bottom: var(--space-lg);
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}

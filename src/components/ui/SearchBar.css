@@ -1,0 +1,90 @@
+/* SearchBar 元件樣式 */
+
+.search-bar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--color-background-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+}
+
+.search-bar-wrapper:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1), var(--shadow-lg);
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--space-lg);
+    color: var(--color-text-muted);
+    pointer-events: none;
+}
+
+.search-input {
+    flex: 1;
+    padding: var(--space-md) var(--space-lg);
+    padding-left: 48px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--color-text);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-button {
+    padding: var(--space-md) var(--space-xl);
+    background: var(--color-cta);
+    color: white;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-body);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    background: var(--color-primary);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .search-bar {
+        max-width: 100%;
+    }
+
+    .search-bar-wrapper {
+        border-radius: var(--radius-md);
+    }
+
+    .search-icon {
+        left: var(--space-md);
+    }
+
+    .search-input {
+        padding: var(--space-sm) var(--space-md);
+        padding-left: 40px;
+        font-size: 14px;
+    }
+
+    .search-button {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 14px;
+    }
+}
