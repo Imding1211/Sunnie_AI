@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, ShoppingCart, Check } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 
 /**
@@ -8,8 +8,9 @@ import { useCart } from '../../context/CartContext';
  * 包含評分星星與加入購物車功能
  */
 const OverviewCourseCard = ({ course }) => {
-    const { addToCart, isInCart } = useCart();
+    const { addToCart, isInCart, requiresAuth } = useCart();
     const navigate = useNavigate();
+    const location = useLocation();
     const alreadyInCart = isInCart(course.id);
 
     const handleAddToCart = (e) => {
@@ -18,6 +19,9 @@ const OverviewCourseCard = ({ course }) => {
 
         if (alreadyInCart) {
             navigate('/cart');
+        } else if (requiresAuth) {
+            // 未登入：導向登入頁，並記錄來源位置
+            navigate('/login', { state: { from: location } });
         } else {
             addToCart(course);
         }

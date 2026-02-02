@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingBag, ArrowLeft, Loader2 } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { ShoppingBag, ArrowLeft, Loader2, LogIn } from 'lucide-react';
 import CartItem from './CartItem';
 import OrderSummary from './OrderSummary';
 import { useCart } from '../../context/CartContext';
@@ -10,10 +10,12 @@ import MainLayout from '../layout/MainLayout';
 /**
  * CartPage 購物車頁面
  * 整合課程清單與結帳摘要，負責資料邏輯與 API 互動
+ * 需登入後才能使用
  */
 const CartPage = () => {
     const navigate = useNavigate();
-    const { cartItems, removeFromCart, clearCart } = useCart();
+    const location = useLocation();
+    const { cartItems, removeFromCart, clearCart, requiresAuth } = useCart();
     const [isCheckingOut, setIsCheckingOut] = useState(false);
 
     // 移除項目
@@ -52,7 +54,50 @@ const CartPage = () => {
         }
     };
 
+    // 未登入時顯示登入提示
+    if (requiresAuth) {
+        return (
+            <MainLayout>
+                <div className="bg-[var(--color-background)] min-h-screen pb-20">
+                    <div className="container mx-auto px-4 py-8 lg:py-12 max-w-7xl">
+                        <div className="flex items-center gap-4 mb-8">
+                            <Link to="/courses" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                <ArrowLeft size={24} className="text-gray-600" />
+                            </Link>
+                            <h1 className="text-3xl font-bold text-gray-900 font-heading">
+                                我的購物車
+                            </h1>
+                        </div>
 
+                        {/* 需要登入提示 */}
+                        <div className="flex flex-col items-center justify-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm text-center">
+                            <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-full flex items-center justify-center mb-6">
+                                <LogIn size={48} className="text-[var(--color-primary)]" />
+                            </div>
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                                請先登入
+                            </h2>
+                            <p className="text-gray-500 mb-8 max-w-sm">
+                                登入您的帳號以使用購物車功能，購物車內容將會自動儲存。
+                            </p>
+                            <div className="flex gap-4">
+                                <Link to="/login" state={{ from: location }}>
+                                    <button className="px-8 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-bold rounded-xl transition-all hover:shadow-lg transform hover:-translate-y-1">
+                                        立即登入
+                                    </button>
+                                </Link>
+                                <Link to="/register" state={{ from: location }}>
+                                    <button className="px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-bold rounded-xl transition-all hover:bg-[var(--color-primary)] hover:text-white">
+                                        註冊帳號
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </MainLayout>
+        );
+    }
 
     return (
         <MainLayout>

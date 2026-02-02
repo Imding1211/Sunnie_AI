@@ -107,6 +107,62 @@
     border-radius: var(--radius-full);
 }
 
+/* User Menu (Logged In State) */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.user-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--color-border);
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm);
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color var(--transition-base);
+    border-radius: var(--radius-sm);
+}
+
+.logout-btn:hover {
+    color: var(--color-error);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.logout-link {
+    background: none;
+    border: none;
+    font-family: inherit;
+    color: var(--color-error);
+}
+
 /* Mobile Menu Toggle */
 .menu-toggle {
     display: none;

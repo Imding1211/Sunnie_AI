@@ -1,0 +1,79 @@
+/* 課程詳情頁面專屬樣式 */
+
+/* Loading 狀態 */
+.course-detail-loading {
+    min-height: 60vh;
+}
+
+/* Error 狀態 */
+.course-detail-error {
+    min-height: 60vh;
+}
+
+/* Hero 區塊 */
+.course-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.course-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* 購買欄卡片動畫 */
+.course-purchase-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-purchase-card:hover {
+    transform: translateY(-2px);
+}
+
+/* 手風琴動畫 */
+.course-curriculum button {
+    cursor: pointer;
+}
+
+/* 響應式調整 */
+@media (max-width: 1024px) {
+
+    /* Mobile: 為底部購買欄騰出空間 */
+    .course-detail-page {
+        padding-bottom: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-hero {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .course-hero h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 課程描述區塊 */
+.course-about .prose {
+    font-size: 0.95rem;
+}
+
+/* Tab 動畫 */
+.course-detail-page button {
+    cursor: pointer;
+}
+
+/* 評論區塊 */
+.course-reviews .flex-1 {
+    min-width: 0;
+}

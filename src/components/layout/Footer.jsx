@@ -33,7 +33,7 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://line.me/ti/p/@sunnie" target="_blank" rel="noopener noreferrer" className="footer-link">
+                                <a href="https://line.me/R/ti/p/@055zjitb" target="_blank" rel="noopener noreferrer" className="footer-link">
                                     <MessageCircle size={16} />
                                     <span>LINE 官方帳號</span>
                                 </a>

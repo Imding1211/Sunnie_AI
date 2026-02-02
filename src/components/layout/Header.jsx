@@ -1,7 +1,8 @@
 import React from 'react';
-import { ShoppingCart, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ShoppingCart, Menu, X, LogOut } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
 import './Header.css';
 
@@ -12,12 +13,17 @@ import './Header.css';
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const { cartCount } = useCart();
-
-    // 模擬資料（實際應從全域狀態或 Context 取得）
-    const isLoggedIn = false;
+    const { isAuthenticated, user, logout } = useAuth();
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLogout = () => {
+        logout();
+        navigate('/');
+        setIsMenuOpen(false);
     };
 
     return (
@@ -38,12 +44,26 @@ const Header = () => {
 
                     {/* Actions */}
                     <div className="header-actions">
-                        {isLoggedIn ? (
-                            <Link to="/profile" className="nav-link">會員中心</Link>
+                        {isAuthenticated ? (
+                            <div className="user-menu">
+                                <Link to="/profile" className="nav-link user-link">
+                                    <img
+                                        src={user?.avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=user'}
+                                        alt={user?.name}
+                                        className="user-avatar"
+                                    />
+                                    <span className="user-name">{user?.name}</span>
+                                </Link>
+                                <button onClick={handleLogout} className="logout-btn" title="登出">
+                                    <LogOut size={18} />
+                                </button>
+                            </div>
                         ) : (
-                            <Button variant="secondary" size="small">
-                                註冊/登入
-                            </Button>
+                            <Link to="/login">
+                                <Button variant="secondary" size="small">
+                                    註冊/登入
+                                </Button>
+                            </Link>
                         )}
 
                         <Link to="/cart" className="cart-icon-wrapper" aria-label="購物車">
@@ -71,12 +91,21 @@ const Header = () => {
                         <Link to="/consult" className="nav-link nav-link-cta" onClick={toggleMenu}>一對一諮詢</Link>
                         <Link to="/resources" className="nav-link" onClick={toggleMenu}>資源分享</Link>
                         <div className="mobile-actions">
-                            {isLoggedIn ? (
-                                <Link to="/profile" className="nav-link" onClick={toggleMenu}>會員中心</Link>
+                            {isAuthenticated ? (
+                                <>
+                                    <Link to="/profile" className="nav-link" onClick={toggleMenu}>
+                                        會員中心 ({user?.name})
+                                    </Link>
+                                    <button onClick={handleLogout} className="nav-link logout-link">
+                                        登出
+                                    </button>
+                                </>
                             ) : (
-                                <Button variant="secondary" size="medium">
-                                    註冊/登入
-                                </Button>
+                                <Link to="/login" onClick={toggleMenu}>
+                                    <Button variant="secondary" size="medium">
+                                        註冊/登入
+                                    </Button>
+                                </Link>
                             )}
                             <Link to="/cart" className="nav-link" onClick={toggleMenu}>
                                 購物車 {cartCount > 0 && `(${cartCount})`}
