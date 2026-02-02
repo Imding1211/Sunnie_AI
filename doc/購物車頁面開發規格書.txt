@@ -1,0 +1,111 @@
+購物車頁面開發規格書
+
+1. 頁面視覺佈局 (Visual Layout)
+
+架構：採用雙欄式設計 (Desktop: 2:1 / Mobile: 1:1)。
+
+響應式：行動端時，結帳摘要區置於底部，並使用 sticky 定位。
+
+2. 元件定義與 API 串接邏輯
+
+2.1 課程清單 (Course List)
+
+資料來源：遍歷本地存儲的 course_ids，呼叫 GET /api/v1/courses/{id}。
+
+展示內容：
+
+thumbnail: 課程縮圖。
+
+title: 課程標題（點擊導向詳情頁）。
+
+instructor: 講師名稱。
+
+price: 目前售價。
+
+互動行為：
+
+移除項目：點擊後從清單消失，並重新計算總額。
+
+2.2 結帳摘要 (Order Summary)
+
+金額計算公式：
+
+小計 (Subtotal): $\sum \text{Price}_i$
+
+折扣 (Discount): 暫定 0 (或模擬優惠碼邏輯)。
+
+應付總額 (Total): $\text{Subtotal} - \text{Discount}$
+
+動作按鈕：
+
+確認結帳：
+
+調用 POST /api/v1/orders 建立訂單。
+
+成功後取得 order_id。
+
+調用 POST /api/v1/orders/{id}/pay 進行付款跳轉。
+
+2.3 身份驗證攔截
+
+進入頁面時檢查 LocalStorage 是否有 accessToken。
+
+若無，顯示登入彈窗或導向 /auth/login。
+
+若 Token 失效，呼叫 POST /api/v1/auth/refresh。
+
+3. JSON 虛擬資料範例 (Mock Data)
+
+提供給 AI 模擬 API 回傳結果：
+
+A. 課程詳情模擬 (GET /api/v1/courses/{id})
+
+[
+  {
+    "id": "c001",
+    "title": "React 全攻略：從入門到實戰打造大型應用",
+    "instructor": "張小明",
+    "price": 3200,
+    "original_price": 4500,
+    "thumbnail": "[https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800](https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800)"
+  },
+  {
+    "id": "c002",
+    "title": "Node.js 後端架構師課程：API 設計與效能優化",
+    "instructor": "李大華",
+    "price": 2800,
+    "original_price": 3600,
+    "thumbnail": "[https://images.unsplash.com/photo-1547658719-da2b51169166?w=800](https://images.unsplash.com/photo-1547658719-da2b51169166?w=800)"
+  }
+]
+
+
+B. 訂單建立模擬 (POST /api/v1/orders)
+
+{
+  "status": "success",
+  "data": {
+    "order_id": "ORD-20240520-X99",
+    "total_amount": 6000,
+    "currency": "TWD",
+    "items": ["c001", "c002"]
+  }
+}
+
+
+C. 付款 API 模擬 (POST /api/v1/orders/{id}/pay)
+
+{
+  "status": "success",
+  "payment_url": "[https://mock-payment-gateway.com/pay/ORD-20240520-X99](https://mock-payment-gateway.com/pay/ORD-20240520-X99)"
+}
+
+
+4. 狀態處理提示
+
+空購物車 (Empty State)：當清單為空時，顯示「你的購物車是空的」文字，並提供一個「去逛逛課程」按鈕。
+
+載入中 (Loading)：呼叫 API 時，按鈕應顯示 disabled 並伴隨 Spinner 動畫。
+
+錯誤回饋：付款失敗時，使用 Toast 提示使用者。
+

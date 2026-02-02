@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import Button from '../ui/Button';
 import './Header.css';
 
@@ -10,10 +11,10 @@ import './Header.css';
  */
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const { cartCount } = useCart();
 
     // 模擬資料（實際應從全域狀態或 Context 取得）
     const isLoggedIn = false;
-    const cartCount = 0;
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -29,14 +30,14 @@ const Header = () => {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="nav desktop-only">
+                    <nav className="nav">
                         <Link to="/courses" className="nav-link">課程總覽</Link>
                         <Link to="/consult" className="nav-link nav-link-cta">一對一諮詢</Link>
                         <Link to="/resources" className="nav-link">資源分享</Link>
                     </nav>
 
                     {/* Actions */}
-                    <div className="header-actions desktop-only">
+                    <div className="header-actions">
                         {isLoggedIn ? (
                             <Link to="/profile" className="nav-link">會員中心</Link>
                         ) : (
@@ -55,7 +56,7 @@ const Header = () => {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="menu-toggle mobile-only"
+                        className="menu-toggle"
                         onClick={toggleMenu}
                         aria-label="選單"
                     >

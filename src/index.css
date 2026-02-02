@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* 桑尼資料科學 - 樣式引入 */
 @import './styles/variables.css';
 @import './styles/global.css';

@@ -12,7 +12,7 @@ const HeroSection = () => {
     const navigate = useNavigate();
 
     const handleSearch = (query) => {
-        navigate(`/courses?q=${encodeURIComponent(query)}`);
+        navigate(`/courses?search=${encodeURIComponent(query)}`);
     };
 
     const handleLeadMagnet = () => {

@@ -1,0 +1,135 @@
+課程總覽頁面功能規格書
+
+1. 頁面架構與佈局 (Page Structure)
+
+1.1 頂部導覽與搜索區 (Header & Search)
+
+搜索列 (Search Bar)：
+
+輸入關鍵字即時或點擊放大鏡搜尋課程。
+
+對應 API：GET /api/v1/courses?search={keyword}。
+
+分類標籤/導航 (Breadcrumbs/Categories)：
+
+顯示目前所屬的分類路徑。
+
+1.2 側邊篩選欄 (Filter Sidebar)
+
+類別篩選 (Categories)：
+
+多選或單選框，列出所有課程類別。
+
+對應 API：GET /api/v1/courses?category={id}。
+
+難易度 (Level)：
+
+初級、中級、高級。
+
+價格區間 (Price Range)：
+
+免費、付費、或自定義價格區間。
+
+評分篩選 (Rating)：
+
+4 顆星以上、3 顆星以上。
+
+1.3 主要內容區 (Main Content)
+
+排序控制 (Sort Controller)：
+
+下拉選單：最新上架、熱門程度、價格由高到低、價格由低到高。
+
+對應 API：GET /api/v1/courses?sort={criteria}。
+
+課程網格 (Course Grid)：
+
+以卡片 (Card) 形式展示課程清單。
+
+支援響應式佈局 (Desktop: 3-4 欄 / Mobile: 1-2 欄)。
+
+分頁控制 (Pagination)：
+
+顯示總頁數、當前頁碼、上一頁/下一頁。
+
+對應 API：GET /api/v1/courses?page={n}&limit=12。
+
+2. 元件定義 (Component Specifications)
+
+2.1 課程卡片元件 (Course Card)
+
+每個卡片應包含以下欄位：
+
+課程縮圖 (Thumbnail)：固定比例 (16:9)。
+
+課程標題 (Title)：最多顯示兩行，超出部分使用省略號。
+
+講師姓名 (Instructor)：從 GET /api/v1/courses 返回的關聯資料中提取。
+
+評價系統 (Rating)：星星圖標與數字評價。
+
+價格顯示 (Pricing)：
+
+原價與優惠價。
+
+若為免費，顯示「免費」。
+
+行動按鈕：
+
+「查看詳情」：跳轉至 /courses/{id}。
+
+「加入購物車」：前端存儲 ID 邏輯。
+
+3. API 整合邏輯 (API Integration)
+
+3.1 初始資料獲取
+
+動作：進入頁面時發送 GET /api/v1/courses。
+
+參數處理：
+
+page: 預設 1。
+
+limit: 預設 12。
+
+sort: 預設為 created_at:desc (最新)。
+
+3.2 篩選與搜尋
+
+當使用者更改側邊欄篩選條件或輸入搜尋文字後，應防抖 (Debounce) 處理並重新呼叫 GET /api/v1/courses。
+
+URL 同步：篩選條件應同步更新至瀏覽器 URL Query String，確保重新整理頁面後篩選條件不失蹤。
+
+3.3 身份驗證與操作限制
+
+判斷登入狀態：
+
+若已登入（auth 有 Token），在卡片上檢查使用者是否已擁有該課程。
+
+若使用者身分為「講師」，點擊「建立課程」按鈕跳轉至 POST /api/v1/courses 對應的表單頁。
+
+4. 異常處理與空狀態 (Edge Cases)
+
+搜尋無結果 (No Results Found)：
+
+顯示文字：「找不到符合搜尋條件的課程，請嘗試其他關鍵字」。
+
+提供「清除所有篩選條件」按鈕。
+
+載入中狀態 (Loading State)：
+
+使用 Skeleton Screen (骨架屏) 填充課程卡片區域，避免頁面跳動。
+
+API 錯誤 (API Error)：
+
+當 API 回傳 500 或 404 時，顯示錯誤訊息元件與「重新整理」按鈕。
+
+5. 交互行為 (Interaction)
+
+無限捲動 vs 分頁：
+
+根據產品需求選擇。若是無限捲動，當滾動到底部時觸發下一頁 API 並串接 data 陣列。
+
+快速預覽 (Quick View)：
+
+滑鼠懸停 (Hover) 在卡片上時，顯示簡單的課程大綱或簡介浮窗（非必選）。
