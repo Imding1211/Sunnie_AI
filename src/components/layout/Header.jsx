@@ -46,7 +46,7 @@ const Header = () => {
                     <div className="header-actions">
                         {isAuthenticated ? (
                             <div className="user-menu">
-                                <Link to="/profile" className="nav-link user-link">
+                                <Link to="/student/my-courses" className="nav-link user-link">
                                     <img
                                         src={user?.avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=user'}
                                         alt={user?.name}
@@ -93,8 +93,8 @@ const Header = () => {
                         <div className="mobile-actions">
                             {isAuthenticated ? (
                                 <>
-                                    <Link to="/profile" className="nav-link" onClick={toggleMenu}>
-                                        會員中心 ({user?.name})
+                                    <Link to="/student/my-courses" className="nav-link" onClick={toggleMenu}>
+                                        學習中心 ({user?.name})
                                     </Link>
                                     <button onClick={handleLogout} className="nav-link logout-link">
                                         登出

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Youtube, Instagram, Linkedin, MessageCircle, Mail } from 'lucide-react';
+import { Youtube, Instagram, MessageCircle, Mail, Facebook, AtSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
@@ -61,7 +61,7 @@ const Footer = () => {
                     <div className="footer-section">
                         <h4 className="footer-heading">追蹤我們</h4>
                         <div className="social-links">
-                            <a
+                            {/* <a
                                 href="https://youtube.com/@sunnie"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -69,9 +69,9 @@ const Footer = () => {
                                 aria-label="YouTube"
                             >
                                 <Youtube size={20} />
-                            </a>
+                            </a> */}
                             <a
-                                href="https://instagram.com/sunnie_data"
+                                href="https://www.instagram.com/datasunnie"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
@@ -80,22 +80,22 @@ const Footer = () => {
                                 <Instagram size={20} />
                             </a>
                             <a
-                                href="https://linkedin.com/company/sunnie-data"
+                                href="https://www.threads.com/@datasunnie"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
-                                aria-label="LinkedIn"
+                                aria-label="Threads"
                             >
-                                <Linkedin size={20} />
+                                <AtSign size={20} />
                             </a>
                             <a
-                                href="https://discord.gg/sunnie"
+                                href="https://www.facebook.com/p/%E6%A1%91%E5%B0%BC%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8-61582680592562/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
-                                aria-label="Discord"
+                                aria-label="Facebook"
                             >
-                                <MessageCircle size={20} />
+                                <Facebook size={20} />
                             </a>
                         </div>
                     </div>
