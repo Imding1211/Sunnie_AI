@@ -8,19 +8,27 @@ import {
     User,
     Share2,
     ChevronLeft,
-    Menu
+    Menu,
+    Upload,
+    BarChart3,
+    ClipboardList
 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 import './StudentSidebar.css';
 
 /**
- * StudentSidebar 學生中心側邊導航
- * 提供學生相關功能的直接入口
+ * StudentSidebar 會員中心側邊導航
+ * 依角色動態顯示不同導航項目
+ * - 學生：我的課程、購課記錄、一對一諮詢、個人簡介、資源分享、設定
+ * - 老師：課程上架、統計分析、老師聯絡簿 + 部分共用項目
  */
 const StudentSidebar = () => {
     const location = useLocation();
+    const { isTeacher } = useAuth();
     const [isCollapsed, setIsCollapsed] = useState(false);
 
-    const navItems = [
+    // 學生專屬項目
+    const studentItems = [
         {
             path: '/student/my-courses',
             icon: BookOpen,
@@ -32,37 +40,75 @@ const StudentSidebar = () => {
             icon: Receipt,
             label: '購課記錄',
             description: '消費記錄'
+        }
+    ];
+
+    // 老師專屬項目
+    const teacherItems = [
+        {
+            path: '/teacher/courses',
+            icon: Upload,
+            label: '課程上架',
+            description: '管理課程'
         },
         {
-            path: '/student/consult',
+            path: '/teacher/statistics',
+            icon: BarChart3,
+            label: '統計分析',
+            description: '數據報表'
+        },
+        {
+            path: '/teacher/contact',
+            icon: ClipboardList,
+            label: '老師聯絡簿',
+            description: '作業與回覆'
+        }
+    ];
+
+    // 共用項目
+    const sharedItems = [
+        {
+            path: isTeacher ? '/teacher/consult' : '/student/consult',
             icon: MessageSquare,
             label: '一對一諮詢',
-            description: '預約諮詢'
+            description: isTeacher ? '管理諮詢' : '預約諮詢'
         },
         {
-            path: '/student/profile',
+            path: isTeacher ? '/teacher/profile' : '/student/profile',
             icon: User,
             label: '個人簡介',
-            description: '學習檔案'
+            description: isTeacher ? '公開檔案' : '學習檔案'
         },
         {
-            path: '/student/resources',
+            path: isTeacher ? '/teacher/resources' : '/student/resources',
             icon: Share2,
             label: '資源分享',
             description: '筆記與文章'
         },
         {
-            path: '/student/settings',
+            path: isTeacher ? '/teacher/settings' : '/student/settings',
             icon: Settings,
             label: '設定',
             description: '帳號設定'
         }
     ];
 
-    const isActive = (path) => location.pathname === path;
+    // 根據角色組合導航項目
+    const navItems = isTeacher
+        ? [...teacherItems, ...sharedItems]
+        : [...studentItems, ...sharedItems];
+
+    const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
 
     return (
         <aside className={`student-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+            {/* Role Badge */}
+            {!isCollapsed && (
+                <div className={`sidebar-role-badge ${isTeacher ? 'teacher' : 'student'}`}>
+                    {isTeacher ? '老師身份' : '學生身份'}
+                </div>
+            )}
+
             {/* Toggle Button */}
             <button
                 className="sidebar-toggle"

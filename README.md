@@ -1,70 +1,190 @@
-# Getting Started with Create React App
+# 桑尼資料科學 - 線上課程平台
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+桑尼資料科學是一個現代化的線上課程學習平台，提供資料科學、機器學習、Python 程式設計等專業課程。
 
-## Available Scripts
+## 🚀 快速開始
 
-In the project directory, you can run:
+### 安裝依賴
+```bash
+npm install
+```
 
-### `npm start`
+### 啟動開發伺服器
+```bash
+npm start
+```
+開啟 [http://localhost:3000](http://localhost:3000) 即可查看網站。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 建置生產版本
+```bash
+npm run build
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🔐 測試帳號
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| 角色 | Email | 密碼 | 說明 |
+|------|-------|------|------|
+| 學生 | `test@example.com` | `Test1234` | 一般學生帳號 |
+| 學生 | `wang@example.com` | `Wang1234` | 王小明 |
+| 老師 | `sunnie@example.com` | `Sunnie1234` | 桑尼老師 |
+| 老師 | `teacher@example.com` | `Teacher1234` | 李老師 |
 
-### `npm run build`
+> **密碼規則**：至少 8 個字元，包含大小寫字母及數字
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📁 專案架構
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├── api/                    # Mock API
+│   ├── mockAuthApi.js      # 身份驗證 API
+│   ├── mockCartApi.js      # 購物車 API
+│   ├── mockStudentApi.js   # 學生 API
+│   └── mockTeacherApi.js   # 老師 API
+│
+├── components/
+│   ├── auth/               # 身份驗證
+│   │   ├── LoginPage.jsx   # 登入頁面
+│   │   ├── RegisterPage.jsx# 註冊頁面
+│   │   └── ProtectedRoute.jsx
+│   │
+│   ├── cart/               # 購物車
+│   │   └── CartPage.jsx
+│   │
+│   ├── courses/            # 課程相關
+│   │   ├── CoursesPage.jsx # 課程總覽
+│   │   └── CourseDetailPage.jsx
+│   │
+│   ├── layout/             # 佈局元件
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── MainLayout.jsx
+│   │
+│   ├── legal/              # 法律資訊
+│   │   └── LegalPage.jsx   # 隱私權、退費、服務條款
+│   │
+│   ├── student/            # 學生中心
+│   │   ├── StudentLayout.jsx
+│   │   ├── StudentSidebar.jsx
+│   │   ├── MyCoursesPage.jsx
+│   │   ├── PurchaseHistoryPage.jsx
+│   │   ├── ProfilePage.jsx
+│   │   └── SettingsPage.jsx
+│   │
+│   └── teacher/            # 老師中心
+│       ├── CourseUploadPage.jsx
+│       ├── StatisticsPage.jsx
+│       ├── TeacherContactPage.jsx
+│       └── TeacherSettingsPage.jsx
+│
+├── context/                # React Context
+│   ├── AuthContext.jsx     # 身份驗證狀態
+│   └── CartContext.jsx     # 購物車狀態
+│
+├── pages/
+│   └── HomePage.jsx        # 首頁
+│
+└── styles/                 # 全域樣式
+    ├── variables.css       # CSS 變數
+    └── global.css
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ✨ 已完成功能
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🏠 首頁
+- Hero 區塊（動態漸層背景）
+- 精選課程輪播
+- 平台特色介紹
+- 學員見證
+- 電子報訂閱
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 📚 課程系統
+- 課程總覽（篩選、排序、搜尋）
+- 課程詳情頁（課綱、講師介紹、FAQ）
+- 購物車功能
+- 加入購物車（需登入）
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🔐 身份驗證
+- 登入 / 註冊（含表單驗證）
+- 密碼強度檢查
+- 記住我功能
+- 第三方登入按鈕（UI）
 
-## Learn More
+### 👨‍🎓 學生中心
+- 我的課程（學習進度追蹤）
+- 購課記錄（交易篩選）
+- 個人簡介（編輯資料、證書）
+- 設定頁面
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 👨‍🏫 老師中心
+- 課程上架（課程列表管理）
+- 統計分析（銷售儀表板）
+- 老師聯絡簿（作業批改、問題回覆）
+- 老師設定（諮詢服務開關）
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 📜 法律資訊
+- 隱私權政策
+- 退費政策（含退費基準表）
+- 服務條款
+- 側邊導航 + 目錄跳轉
+- 列印 / 存為 PDF
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔗 路由結構
 
-### Analyzing the Bundle Size
+| 路由 | 頁面 | 保護 |
+|------|------|------|
+| `/` | 首頁 | ❌ |
+| `/courses` | 課程總覽 | ❌ |
+| `/courses/:id` | 課程詳情 | ❌ |
+| `/login` | 登入 | ❌ |
+| `/register` | 註冊 | ❌ |
+| `/cart` | 購物車 | ❌ |
+| `/privacy` | 隱私權政策 | ❌ |
+| `/refund` | 退費政策 | ❌ |
+| `/terms` | 服務條款 | ❌ |
+| `/student/my-courses` | 我的課程 | ✅ |
+| `/student/history` | 購課記錄 | ✅ |
+| `/student/profile` | 個人簡介 | ✅ |
+| `/student/settings` | 設定 | ✅ |
+| `/teacher/courses` | 課程上架 | ✅ |
+| `/teacher/statistics` | 統計分析 | ✅ |
+| `/teacher/contact` | 老師聯絡簿 | ✅ |
+| `/teacher/settings` | 老師設定 | ✅ |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🛠️ 技術棧
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **前端框架**：React 18
+- **路由**：React Router DOM v6
+- **狀態管理**：React Context API
+- **樣式**：CSS + Tailwind CSS
+- **圖示**：Lucide React
+- **頭像生成**：DiceBear API
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 開發筆記
 
-### Deployment
+### 角色系統
+- 使用者資料包含 `role` 欄位：`student` / `teacher`
+- `AuthContext` 提供 `isTeacher` 判斷
+- 側邊導航依角色動態顯示不同項目
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Mock API
+- 所有 API 皆為前端模擬，無需後端
+- 資料儲存於 localStorage
+- 模擬網路延遲以測試 Loading 狀態
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 授權
+
+此專案僅供學習與展示用途。

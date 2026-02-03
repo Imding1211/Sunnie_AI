@@ -118,7 +118,7 @@ const LoginPage = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="輸入您的密碼"
-                                    className="form-input"
+                                    className="form-input has-toggle"
                                     required
                                     autoComplete="current-password"
                                 />

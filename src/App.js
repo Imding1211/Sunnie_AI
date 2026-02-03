@@ -20,6 +20,15 @@ import ProfilePage from './components/student/ProfilePage';
 import SettingsPage from './components/student/SettingsPage';
 import StudentPlaceholderPage from './components/student/PlaceholderPage';
 
+// 老師中心頁面
+import CourseUploadPage from './components/teacher/CourseUploadPage';
+import StatisticsPage from './components/teacher/StatisticsPage';
+import TeacherContactPage from './components/teacher/TeacherContactPage';
+import TeacherSettingsPage from './components/teacher/TeacherSettingsPage';
+
+// 法律資訊頁面
+import LegalPage from './components/legal/LegalPage';
+
 /**
  * App 主應用元件
  * 設置路由與頁面導航
@@ -45,12 +54,14 @@ function App() {
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/courses/:id" element={<CourseDetailPage />} />
 
+            {/* 法律資訊頁面 */}
+            <Route path="/privacy" element={<LegalPage />} />
+            <Route path="/refund" element={<LegalPage />} />
+            <Route path="/terms" element={<LegalPage />} />
+
             {/* 公開頁面 */}
             <Route path="/consult" element={<PlaceholderPage title="一對一諮詢" />} />
             <Route path="/resources" element={<PlaceholderPage title="資源分享" />} />
-            <Route path="/privacy" element={<PlaceholderPage title="隱私權政策" />} />
-            <Route path="/refund" element={<PlaceholderPage title="退費政策" />} />
-            <Route path="/terms" element={<PlaceholderPage title="服務條款" />} />
             <Route path="/forgot-password" element={<PlaceholderPage title="忘記密碼" />} />
             <Route path="/become-teacher" element={<PlaceholderPage title="成為老師" />} />
 
@@ -80,6 +91,43 @@ function App() {
             <Route path="/student/course/:id" element={
               <ProtectedRoute>
                 <StudentPlaceholderPage title="上課頁面" description="沉浸式學習介面即將推出，敬請期待！" />
+              </ProtectedRoute>
+            } />
+
+            {/* 老師中心 (需登入) */}
+            <Route path="/teacher/courses" element={
+              <ProtectedRoute><CourseUploadPage /></ProtectedRoute>
+            } />
+            <Route path="/teacher/courses/new" element={
+              <ProtectedRoute>
+                <StudentPlaceholderPage title="建立新課程" description="課程編輯器即將推出，敬請期待！" />
+              </ProtectedRoute>
+            } />
+            <Route path="/teacher/courses/:id/edit" element={
+              <ProtectedRoute>
+                <StudentPlaceholderPage title="編輯課程" description="課程編輯器即將推出，敬請期待！" />
+              </ProtectedRoute>
+            } />
+            <Route path="/teacher/statistics" element={
+              <ProtectedRoute><StatisticsPage /></ProtectedRoute>
+            } />
+            <Route path="/teacher/contact" element={
+              <ProtectedRoute><TeacherContactPage /></ProtectedRoute>
+            } />
+            <Route path="/teacher/settings" element={
+              <ProtectedRoute><TeacherSettingsPage /></ProtectedRoute>
+            } />
+            <Route path="/teacher/profile" element={
+              <ProtectedRoute><ProfilePage /></ProtectedRoute>
+            } />
+            <Route path="/teacher/consult" element={
+              <ProtectedRoute>
+                <StudentPlaceholderPage title="諮詢管理" description="管理您的諮詢時段與預約，敬請期待！" />
+              </ProtectedRoute>
+            } />
+            <Route path="/teacher/resources" element={
+              <ProtectedRoute>
+                <StudentPlaceholderPage title="資源分享" description="撰寫與發布專業文章，敬請期待！" />
               </ProtectedRoute>
             } />
 

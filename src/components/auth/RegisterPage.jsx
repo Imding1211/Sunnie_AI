@@ -155,7 +155,7 @@ const RegisterPage = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="設定您的密碼"
-                                    className="form-input"
+                                    className="form-input has-toggle"
                                     required
                                     autoComplete="new-password"
                                 />
@@ -203,7 +203,7 @@ const RegisterPage = () => {
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                     placeholder="再次輸入密碼"
-                                    className={`form-input ${confirmPassword.length > 0 ? (passwordsMatch ? 'input-valid' : 'input-invalid') : ''}`}
+                                    className={`form-input has-toggle ${confirmPassword.length > 0 ? (passwordsMatch ? 'input-valid' : 'input-invalid') : ''}`}
                                     required
                                     autoComplete="new-password"
                                 />

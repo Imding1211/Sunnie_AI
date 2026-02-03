@@ -69,9 +69,13 @@ export const AuthProvider = ({ children }) => {
         setUser(prev => prev ? { ...prev, ...updates } : null);
     };
 
+    // 是否為老師角色
+    const isTeacher = user?.role === 'teacher';
+
     const value = {
         user,
         isAuthenticated,
+        isTeacher,
         loading,
         setLoading,
         login,

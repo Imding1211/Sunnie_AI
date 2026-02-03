@@ -105,26 +105,38 @@
 /* Input Wrapper */
 .input-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
+    display: block;
+    width: 100%;
 }
 
 .input-icon {
     position: absolute;
-    left: 0.875rem;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #9ca3af;
     pointer-events: none;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
 }
 
 .form-input {
     width: 100%;
-    padding: 0.75rem 2.75rem 0.75rem 2.75rem;
+    padding: 12px 14px 12px 44px !important;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
     font-size: 0.9rem;
     color: #1f2937;
     background: #f9fafb;
     transition: all 0.2s ease;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 有右側按鈕的 input（如密碼欄位） */
+.form-input.has-toggle {
+    padding-right: 2.75rem;
 }
 
 .form-input:focus {
@@ -136,6 +148,8 @@
 
 .form-input::placeholder {
     color: #9ca3af;
+    font-size: 0.9rem;
+    opacity: 1;
 }
 
 .form-input.input-valid {

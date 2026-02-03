@@ -16,6 +16,26 @@
     width: 72px;
 }
 
+/* Role Badge */
+.sidebar-role-badge {
+    margin: 1rem 0.75rem 0;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.sidebar-role-badge.student {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.15) 100%);
+    color: #2563eb;
+}
+
+.sidebar-role-badge.teacher {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.15) 100%);
+    color: #d97706;
+}
+
 /* Toggle Button */
 .sidebar-toggle {
     display: flex;

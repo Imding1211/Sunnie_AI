@@ -27,9 +27,9 @@ const Footer = () => {
                         <h4 className="footer-heading">聯絡我們</h4>
                         <ul className="footer-list">
                             <li>
-                                <a href="mailto:contact@sunnie-data.com" className="footer-link">
+                                <a href="mailto:sunne.commercial@gmail.com" className="footer-link">
                                     <Mail size={16} />
-                                    <span>contact@sunnie-data.com</span>
+                                    <span>sunne.commercial@gmail.com</span>
                                 </a>
                             </li>
                             <li>
