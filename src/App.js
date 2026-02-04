@@ -29,6 +29,9 @@ import TeacherSettingsPage from './components/teacher/TeacherSettingsPage';
 // 法律資訊頁面
 import LegalPage from './components/legal/LegalPage';
 
+// 一對一諮詢頁面
+import ConsultPage from './components/consult/ConsultPage';
+
 /**
  * App 主應用元件
  * 設置路由與頁面導航
@@ -59,8 +62,11 @@ function App() {
             <Route path="/refund" element={<LegalPage />} />
             <Route path="/terms" element={<LegalPage />} />
 
+            {/* 一對一諮詢頁面 */}
+            <Route path="/consult" element={<ConsultPage />} />
+            <Route path="/consult/:consultantId" element={<ConsultPage />} />
+
             {/* 公開頁面 */}
-            <Route path="/consult" element={<PlaceholderPage title="一對一諮詢" />} />
             <Route path="/resources" element={<PlaceholderPage title="資源分享" />} />
             <Route path="/forgot-password" element={<PlaceholderPage title="忘記密碼" />} />
             <Route path="/become-teacher" element={<PlaceholderPage title="成為老師" />} />

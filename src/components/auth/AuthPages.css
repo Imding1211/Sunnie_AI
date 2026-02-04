@@ -163,12 +163,17 @@
 .input-toggle {
     position: absolute;
     right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
     padding: 0;
     background: none;
     border: none;
     color: #9ca3af;
     cursor: pointer;
     transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-toggle:hover {
