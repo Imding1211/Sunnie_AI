@@ -284,5 +284,64 @@ export const mockConsultApi = {
             status: 'success',
             message: '預約已取消'
         };
+    },
+
+    /**
+     * 老師端：獲取諮詢預約列表
+     */
+    getTeacherBookings: async (consultantId) => {
+        await delay(300);
+        const bookings = getBookings();
+        // 篩選該導師的預約
+        const filtered = bookings.filter(b => b.consultantId === consultantId);
+        return {
+            status: 'success',
+            data: filtered
+        };
+    },
+
+    /**
+     * 老師端：更新預約狀態（確認/拒絕/完成）
+     */
+    updateBookingStatus: async (bookingId, newStatus) => {
+        await delay(400);
+        const bookings = getBookings();
+        const bookingIndex = bookings.findIndex(b => b.id === bookingId);
+
+        if (bookingIndex === -1) {
+            return { status: 'error', error: '找不到該預約' };
+        }
+
+        bookings[bookingIndex].status = newStatus;
+        bookings[bookingIndex].updatedAt = new Date().toISOString();
+        localStorage.setItem('sunnie_bookings', JSON.stringify(bookings));
+
+        return {
+            status: 'success',
+            data: bookings[bookingIndex]
+        };
+    },
+
+    /**
+     * 學生端：評價諮詢
+     */
+    rateBooking: async (bookingId, rating, review) => {
+        await delay(400);
+        const bookings = getBookings();
+        const bookingIndex = bookings.findIndex(b => b.id === bookingId);
+
+        if (bookingIndex === -1) {
+            return { status: 'error', error: '找不到該預約' };
+        }
+
+        bookings[bookingIndex].rating = rating;
+        bookings[bookingIndex].review = review;
+        bookings[bookingIndex].ratedAt = new Date().toISOString();
+        localStorage.setItem('sunnie_bookings', JSON.stringify(bookings));
+
+        return {
+            status: 'success',
+            data: bookings[bookingIndex]
+        };
     }
 };

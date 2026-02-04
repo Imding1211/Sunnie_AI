@@ -2,8 +2,6 @@
 
 .search-bar {
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
 }
 
 .search-bar-wrapper {
@@ -25,21 +23,26 @@
 
 .search-icon {
     position: absolute;
-    left: var(--space-lg);
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--color-text-muted);
     pointer-events: none;
+    z-index: 1;
 }
 
 .search-input {
     flex: 1;
-    padding: var(--space-md) var(--space-lg);
-    padding-left: 48px;
+    padding: 14px 16px;
+    padding-left: 48px !important;
     font-family: var(--font-body);
-    font-size: var(--text-body);
+    font-size: 1rem;
     border: none;
     outline: none;
     background: transparent;
     color: var(--color-text);
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .search-input::placeholder {

@@ -70,8 +70,8 @@ const StudentSidebar = () => {
         {
             path: isTeacher ? '/teacher/consult' : '/student/consult',
             icon: MessageSquare,
-            label: '一對一諮詢',
-            description: isTeacher ? '管理諮詢' : '預約諮詢'
+            label: '諮詢紀錄',
+            description: isTeacher ? '管理諮詢' : '我的預約'
         },
         {
             path: isTeacher ? '/teacher/profile' : '/student/profile',
@@ -82,8 +82,8 @@ const StudentSidebar = () => {
         {
             path: isTeacher ? '/teacher/resources' : '/student/resources',
             icon: Share2,
-            label: '資源分享',
-            description: '筆記與文章'
+            label: '資源管理',
+            description: '我的資源'
         },
         {
             path: isTeacher ? '/teacher/settings' : '/student/settings',

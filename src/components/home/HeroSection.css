@@ -72,6 +72,9 @@
 }
 
 .hero-search {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
     margin-bottom: var(--space-2xl);
     animation-delay: 0.2s;
 }

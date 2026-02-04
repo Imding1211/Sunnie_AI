@@ -19,18 +19,24 @@ import PurchaseHistoryPage from './components/student/PurchaseHistoryPage';
 import ProfilePage from './components/student/ProfilePage';
 import SettingsPage from './components/student/SettingsPage';
 import StudentPlaceholderPage from './components/student/PlaceholderPage';
+import StudentConsultPage from './components/student/StudentConsultPage';
+import MyResourcesPage from './components/student/MyResourcesPage';
 
 // 老師中心頁面
 import CourseUploadPage from './components/teacher/CourseUploadPage';
 import StatisticsPage from './components/teacher/StatisticsPage';
 import TeacherContactPage from './components/teacher/TeacherContactPage';
 import TeacherSettingsPage from './components/teacher/TeacherSettingsPage';
+import TeacherConsultPage from './components/teacher/TeacherConsultPage';
 
 // 法律資訊頁面
 import LegalPage from './components/legal/LegalPage';
 
 // 一對一諮詢頁面
 import ConsultPage from './components/consult/ConsultPage';
+
+// 資源分享頁面
+import ResourcesPage from './components/resources/ResourcesPage';
 
 /**
  * App 主應用元件
@@ -66,8 +72,10 @@ function App() {
             <Route path="/consult" element={<ConsultPage />} />
             <Route path="/consult/:consultantId" element={<ConsultPage />} />
 
+            {/* 資源分享頁面 */}
+            <Route path="/resources" element={<ResourcesPage />} />
+
             {/* 公開頁面 */}
-            <Route path="/resources" element={<PlaceholderPage title="資源分享" />} />
             <Route path="/forgot-password" element={<PlaceholderPage title="忘記密碼" />} />
             <Route path="/become-teacher" element={<PlaceholderPage title="成為老師" />} />
 
@@ -85,14 +93,10 @@ function App() {
               <ProtectedRoute><SettingsPage /></ProtectedRoute>
             } />
             <Route path="/student/consult" element={
-              <ProtectedRoute>
-                <StudentPlaceholderPage title="一對一諮詢" description="預約與管理個人化諮詢服務，敬請期待！" />
-              </ProtectedRoute>
+              <ProtectedRoute><StudentConsultPage /></ProtectedRoute>
             } />
             <Route path="/student/resources" element={
-              <ProtectedRoute>
-                <StudentPlaceholderPage title="資源分享" description="分享筆記與撰寫文章，敬請期待！" />
-              </ProtectedRoute>
+              <ProtectedRoute><MyResourcesPage /></ProtectedRoute>
             } />
             <Route path="/student/course/:id" element={
               <ProtectedRoute>
@@ -127,14 +131,10 @@ function App() {
               <ProtectedRoute><ProfilePage /></ProtectedRoute>
             } />
             <Route path="/teacher/consult" element={
-              <ProtectedRoute>
-                <StudentPlaceholderPage title="諮詢管理" description="管理您的諮詢時段與預約，敬請期待！" />
-              </ProtectedRoute>
+              <ProtectedRoute><TeacherConsultPage /></ProtectedRoute>
             } />
             <Route path="/teacher/resources" element={
-              <ProtectedRoute>
-                <StudentPlaceholderPage title="資源分享" description="撰寫與發布專業文章，敬請期待！" />
-              </ProtectedRoute>
+              <ProtectedRoute><MyResourcesPage /></ProtectedRoute>
             } />
 
             {/* 舊路由重導向至學生中心 */}
