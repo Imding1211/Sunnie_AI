@@ -12,8 +12,8 @@ import {
     Eye,
     FileText
 } from 'lucide-react';
-import Header from '../layout/Header';
-import StudentSidebar from '../student/StudentSidebar';
+import Header from '../../components/layout/Header';
+import StudentSidebar from '../../components/student/StudentSidebar';
 import { useAuth } from '../../context/AuthContext';
 import { mockConsultApi } from '../../api/mockConsultApi';
 import '../student/StudentConsultPage.css';

@@ -13,8 +13,8 @@ import {
     Loader2,
     Search
 } from 'lucide-react';
-import Header from '../layout/Header';
-import StudentSidebar from '../student/StudentSidebar';
+import Header from '../../components/layout/Header';
+import StudentSidebar from '../../components/student/StudentSidebar';
 import { useAuth } from '../../context/AuthContext';
 import { mockResourceApi } from '../../api/mockResourceApi';
 import './MyResourcesPage.css';

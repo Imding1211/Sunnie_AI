@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Receipt, Filter, Loader2, CheckCircle, XCircle } from 'lucide-react';
-import StudentLayout from './StudentLayout';
+import StudentLayout from '../../components/student/StudentLayout';
 import { mockStudentApi } from '../../api/mockStudentApi';
 import './PurchaseHistoryPage.css';
 

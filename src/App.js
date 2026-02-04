@@ -6,37 +6,37 @@ import { AuthProvider } from './context/AuthContext';
 import ScrollRestoration from './components/layout/ScrollRestoration';
 import './App.css';
 
-import CartPage from './components/cart/CartPage';
-import CoursesPage from './components/courses/CoursesPage';
-import CourseDetailPage from './components/courses/CourseDetailPage';
-import LoginPage from './components/auth/LoginPage';
-import RegisterPage from './components/auth/RegisterPage';
+import CartPage from './pages/CartPage';
+import CoursesPage from './pages/CoursesPage';
+import CourseDetailPage from './pages/CourseDetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
 // 學生中心頁面
-import MyCoursesPage from './components/student/MyCoursesPage';
-import PurchaseHistoryPage from './components/student/PurchaseHistoryPage';
-import ProfilePage from './components/student/ProfilePage';
-import SettingsPage from './components/student/SettingsPage';
+import MyCoursesPage from './pages/student/MyCoursesPage';
+import PurchaseHistoryPage from './pages/student/PurchaseHistoryPage';
+import ProfilePage from './pages/student/ProfilePage';
+import SettingsPage from './pages/student/SettingsPage';
 import StudentPlaceholderPage from './components/student/PlaceholderPage';
-import StudentConsultPage from './components/student/StudentConsultPage';
-import MyResourcesPage from './components/student/MyResourcesPage';
+import StudentConsultPage from './pages/student/StudentConsultPage';
+import MyResourcesPage from './pages/student/MyResourcesPage';
 
 // 老師中心頁面
-import CourseUploadPage from './components/teacher/CourseUploadPage';
-import StatisticsPage from './components/teacher/StatisticsPage';
-import TeacherContactPage from './components/teacher/TeacherContactPage';
-import TeacherSettingsPage from './components/teacher/TeacherSettingsPage';
-import TeacherConsultPage from './components/teacher/TeacherConsultPage';
+import CourseUploadPage from './pages/teacher/CourseUploadPage';
+import StatisticsPage from './pages/teacher/StatisticsPage';
+import TeacherContactPage from './pages/teacher/TeacherContactPage';
+import TeacherSettingsPage from './pages/teacher/TeacherSettingsPage';
+import TeacherConsultPage from './pages/teacher/TeacherConsultPage';
 
 // 法律資訊頁面
-import LegalPage from './components/legal/LegalPage';
+import LegalPage from './pages/LegalPage';
 
 // 一對一諮詢頁面
-import ConsultPage from './components/consult/ConsultPage';
+import ConsultPage from './pages/ConsultPage';
 
 // 資源分享頁面
-import ResourcesPage from './components/resources/ResourcesPage';
+import ResourcesPage from './pages/ResourcesPage';
 
 /**
  * App 主應用元件

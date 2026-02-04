@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ShoppingBag, ArrowLeft, Loader2, LogIn } from 'lucide-react';
-import CartItem from './CartItem';
-import OrderSummary from './OrderSummary';
-import { useCart } from '../../context/CartContext';
-import { mockCartApi } from '../../api/mockCartApi';
-import MainLayout from '../layout/MainLayout';
+import CartItem from '../components/cart/CartItem';
+import OrderSummary from '../components/cart/OrderSummary';
+import { useCart } from '../context/CartContext';
+import { mockCartApi } from '../api/mockCartApi';
+import MainLayout from '../components/layout/MainLayout';
 
 /**
  * CartPage 購物車頁面

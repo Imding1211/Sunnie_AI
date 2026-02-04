@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User, Camera, Award, Briefcase, Loader2, Save, Check } from 'lucide-react';
-import StudentLayout from './StudentLayout';
+import StudentLayout from '../../components/student/StudentLayout';
 import { useAuth } from '../../context/AuthContext';
 import { mockStudentApi } from '../../api/mockStudentApi';
 import './ProfilePage.css';

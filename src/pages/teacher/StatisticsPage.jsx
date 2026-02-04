@@ -10,7 +10,7 @@ import {
     ChevronRight,
     Star
 } from 'lucide-react';
-import StudentLayout from '../student/StudentLayout';
+import StudentLayout from '../../components/student/StudentLayout';
 import { mockTeacherApi } from '../../api/mockTeacherApi';
 import './StatisticsPage.css';
 

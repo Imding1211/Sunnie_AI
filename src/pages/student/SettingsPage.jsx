@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Settings as SettingsIcon, GraduationCap, ChevronRight, Bell, Lock, User } from 'lucide-react';
-import StudentLayout from './StudentLayout';
+import { GraduationCap, ChevronRight, Bell, Lock, User } from 'lucide-react';
+import StudentLayout from '../../components/student/StudentLayout';
 import './SettingsPage.css';
 
 /**

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Loader2, Check, X } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
-import { mockAuthApi } from '../../api/mockAuthApi';
+import { useAuth } from '../context/AuthContext';
+import { mockAuthApi } from '../api/mockAuthApi';
 import './AuthPages.css';
 
 /**

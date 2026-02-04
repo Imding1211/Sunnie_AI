@@ -10,7 +10,7 @@ import {
     ToggleLeft,
     ToggleRight
 } from 'lucide-react';
-import StudentLayout from '../student/StudentLayout';
+import StudentLayout from '../../components/student/StudentLayout';
 import './TeacherSettingsPage.css';
 
 /**

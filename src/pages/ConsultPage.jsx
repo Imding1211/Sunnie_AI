@@ -17,10 +17,10 @@ import {
     Award,
     Briefcase
 } from 'lucide-react';
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
-import { useAuth } from '../../context/AuthContext';
-import { mockConsultApi } from '../../api/mockConsultApi';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+import { useAuth } from '../context/AuthContext';
+import { mockConsultApi } from '../api/mockConsultApi';
 import './ConsultPage.css';
 
 /**

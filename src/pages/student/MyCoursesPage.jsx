@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Clock, ChevronRight, Loader2 } from 'lucide-react';
-import StudentLayout from './StudentLayout';
+import StudentLayout from '../../components/student/StudentLayout';
 import { mockStudentApi } from '../../api/mockStudentApi';
 import './MyCoursesPage.css';
 

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search } from 'lucide-react';
-import MainLayout from '../layout/MainLayout';
-import FilterSidebar from './FilterSidebar';
-import CourseSort from './CourseSort';
-import Pagination from './Pagination';
-import OverviewCourseCard from './OverviewCourseCard';
-import { mockCoursesApi } from '../../api/mockCoursesApi';
+import MainLayout from '../components/layout/MainLayout';
+import FilterSidebar from '../components/courses/FilterSidebar';
+import CourseSort from '../components/courses/CourseSort';
+import Pagination from '../components/courses/Pagination';
+import OverviewCourseCard from '../components/courses/OverviewCourseCard';
+import { mockCoursesApi } from '../api/mockCoursesApi';
 
 /**
  * CoursesPage 課程總覽頁面

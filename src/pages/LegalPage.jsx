@@ -9,8 +9,8 @@ import {
     ExternalLink,
     Mail
 } from 'lucide-react';
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
 import './LegalPage.css';
 
 /**
@@ -35,6 +35,7 @@ const LegalPage = () => {
     // 同步 URL 與 Tab
     useEffect(() => {
         setActiveTab(getActiveTab());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
     // 監聽滾動更新目錄高亮

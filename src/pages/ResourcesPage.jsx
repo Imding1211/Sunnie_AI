@@ -25,10 +25,10 @@ import {
     Briefcase,
     Wrench
 } from 'lucide-react';
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
-import { useAuth } from '../../context/AuthContext';
-import { mockResourceApi } from '../../api/mockResourceApi';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+import { useAuth } from '../context/AuthContext';
+import { mockResourceApi } from '../api/mockResourceApi';
 import './ResourcesPage.css';
 
 /**

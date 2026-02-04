@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Star, Users, Clock, BookOpen, PlayCircle } from 'lucide-react';
-import MainLayout from '../layout/MainLayout';
-import CourseHero from './CourseHero';
-import CoursePurchaseCard from './CoursePurchaseCard';
-import CourseCurriculum from './CourseCurriculum';
-import CourseReviews from './CourseReviews';
-import { mockCoursesApi } from '../../api/mockCoursesApi';
+import MainLayout from '../components/layout/MainLayout';
+import CourseHero from '../components/courses/CourseHero';
+import CoursePurchaseCard from '../components/courses/CoursePurchaseCard';
+import CourseCurriculum from '../components/courses/CourseCurriculum';
+import CourseReviews from '../components/courses/CourseReviews';
+import { mockCoursesApi } from '../api/mockCoursesApi';
 import './CourseDetailPage.css';
 
 /**
@@ -133,8 +133,8 @@ const CourseDetailPage = () => {
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
                                         className={`px-6 py-3 font-medium text-sm whitespace-nowrap transition-colors border-b-2 -mb-px ${activeTab === tab.id
-                                                ? 'text-[var(--color-primary)] border-[var(--color-primary)]'
-                                                : 'text-gray-500 border-transparent hover:text-gray-700'
+                                            ? 'text-[var(--color-primary)] border-[var(--color-primary)]'
+                                            : 'text-gray-500 border-transparent hover:text-gray-700'
                                             }`}
                                     >
                                         {tab.label}
