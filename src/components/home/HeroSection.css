@@ -87,6 +87,19 @@
     animation-delay: 0.4s;
 }
 
+/* Hero 區域按鈕樣式 - 適配深色背景 */
+.hero-cta-group .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-cta-group .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    color: white;
+}
+
 /* 響應式調整 */
 @media (max-width: 768px) {
     .hero-section {
