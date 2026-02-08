@@ -197,7 +197,7 @@
 
 ### 9. 會員中心 (`/dashboard`)
 
-登入會員的個人中心，依角色（學生/教師）動態顯示側邊導航項目。詳見 `09_student_center.md` 和 `10_teacher_center.md`。
+登入會員的個人中心，依角色（學生/教師）動態顯示側邊導航項目。整體框架（Dashboard Shell、角色路由、Auth Guard、共用頁面）詳見 `12_member_center.md`，學生專屬子頁面詳見 `09_student_center.md`，教師專屬子頁面詳見 `10_teacher_center.md`。
 
 ---
 
@@ -292,4 +292,5 @@
 | 學生中心規格書 | `doc/specs/09_student_center.md` | 會員個人頁、學習進度 |
 | 教師中心規格書 | `doc/specs/10_teacher_center.md` | 教師後台管理 |
 | 通知組件規格書 | `doc/specs/11_notification_component.md` | Header 通知下拉面板組件 |
+| 會員中心框架規格書 | `doc/specs/12_member_center.md` | Dashboard Shell、角色路由、Auth Guard、共用頁面 |
 | UI 設計指南 | `doc/specs/UI_guideline.md` | 色彩、字型、元件設計規範 |
